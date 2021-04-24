@@ -6,7 +6,7 @@ using System;
 
 namespace Biblioteca.Controllers
 {
-    
+
     public class EmprestimoController : Controller
     {
         public IActionResult Cadastro()
@@ -17,8 +17,8 @@ namespace Biblioteca.Controllers
             CadEmprestimoViewModel cadModel = new CadEmprestimoViewModel();
             cadModel.Livros = livroService.ListarDisponiveis();
 
-            if(HttpContext.Session.GetString("login") == null)
-            return RedirectToAction("Index", "Home");
+            if (HttpContext.Session.GetString("login") == null)
+                return RedirectToAction("Index", "Home");
 
             return View(cadModel);
         }
@@ -27,8 +27,8 @@ namespace Biblioteca.Controllers
         public IActionResult Cadastro(CadEmprestimoViewModel viewModel)
         {
             EmprestimoService emprestimoService = new EmprestimoService();
-            
-            if(viewModel.Emprestimo.Id == 0)
+
+            if (viewModel.Emprestimo.Id == 0)
             {
                 emprestimoService.Inserir(viewModel.Emprestimo);
             }
@@ -39,17 +39,50 @@ namespace Biblioteca.Controllers
             return RedirectToAction("Listagem");
         }
 
+        [HttpGet]
+        public IActionResult Listagem(int p = 1)
+        {
+
+            int quantidadePorPagina = 10;
+
+            EmprestimoService es = new EmprestimoService();
+
+            ICollection<Emprestimo> emprestimos = es.Listar(p, quantidadePorPagina);
+
+            int quantidadeRegistros = es.CountEmprestimos();
+
+            ViewData["Paginas"] = (int)Math.Ceiling((double)quantidadeRegistros / quantidadePorPagina);
+
+            if (HttpContext.Session.GetString("login") == null){
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(emprestimos);
+        }
+
+        [HttpPost]
         public IActionResult Listagem(string tipoFiltro, string filtro)
         {
+
             FiltrosEmprestimos objFiltro = null;
-            if(!string.IsNullOrEmpty(filtro))
+
+            if (!string.IsNullOrEmpty(filtro))
             {
                 objFiltro = new FiltrosEmprestimos();
                 objFiltro.Filtro = filtro;
                 objFiltro.TipoFiltro = tipoFiltro;
             }
+
             EmprestimoService emprestimoService = new EmprestimoService();
-            return View(emprestimoService.ListarTodos(objFiltro));
+
+            ICollection<Emprestimo> emprestimos = emprestimoService.ListarTodos(objFiltro);
+
+            if (emprestimos.Count == 0)
+            {
+                ViewData["Mensagem02"] = "Nenhum registro encontrado";
+            }
+            
+            return View(emprestimos);
         }
 
         public IActionResult Edicao(int id)
@@ -61,7 +94,7 @@ namespace Biblioteca.Controllers
             CadEmprestimoViewModel cadModel = new CadEmprestimoViewModel();
             cadModel.Livros = livroService.ListarTodos();
             cadModel.Emprestimo = e;
-            
+
             return View(cadModel);
         }
     }
