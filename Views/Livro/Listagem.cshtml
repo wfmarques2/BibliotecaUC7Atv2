@@ -43,5 +43,11 @@
                 }
             </tbody>
         </table>
+        @for(int i = 1; i<= (int)ViewData["Paginas"]; i++)
+        {
+            <a href="/Livro/Listagem/?p=@i">@i</a>
+        }
     </div>
 </div>
+
+@ViewData["Mensagem01"]
