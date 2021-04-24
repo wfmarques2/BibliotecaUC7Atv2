@@ -21,7 +21,10 @@ namespace Biblioteca.Controllers
 
         public IActionResult Index()
         {
-            Autenticacao.CheckLogin(this);
+            if(HttpContext.Session.GetInt32("id_usuarios") == null){
+                return RedirectToAction("Login");
+            }
+
             return View();
         }
 
