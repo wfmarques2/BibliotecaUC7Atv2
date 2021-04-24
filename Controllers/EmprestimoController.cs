@@ -15,7 +15,11 @@ namespace Biblioteca.Controllers
             EmprestimoService emprestimoService = new EmprestimoService();
 
             CadEmprestimoViewModel cadModel = new CadEmprestimoViewModel();
-            cadModel.Livros = livroService.ListarTodos();
+            cadModel.Livros = livroService.ListarDisponiveis();
+
+            if(HttpContext.Session.GetString("login") == null)
+            return RedirectToAction("Index", "Home");
+
             return View(cadModel);
         }
 
