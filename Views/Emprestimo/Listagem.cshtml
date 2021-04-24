@@ -76,6 +76,10 @@
                 }
             </tbody>
         </table>
+        @for(int i = 1; i<= (int)ViewData["Paginas"]; i++)
+        {
+            <a href="/Emprestimo/Listagem/?p=@i">@i</a>
+        }
     </div>
 </div>
 
