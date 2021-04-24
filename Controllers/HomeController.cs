@@ -38,8 +38,9 @@ namespace Biblioteca.Controllers
         public IActionResult Login(Usuario u)
         {
 
-            UsuarioService us = new UsuarioService();
-            Usuario usuario = us.Login(u);
+            UsuarioService user = new UsuarioService();
+
+            Usuario usuario = user.Login(u);
 
             if (usuario != null)
             {
