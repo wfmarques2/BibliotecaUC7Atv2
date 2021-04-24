@@ -104,3 +104,6 @@ C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\staticweb
 C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\Biblioteca.dll
 C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\Biblioteca.pdb
 C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\Biblioteca.genruntimeconfig.cache
+C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Cadastro.cshtml.g.cs
+C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Editar.cshtml.g.cs
+C:\Users\tairi\Desktop\Atividade 01\Biblioteca\obj\Debug\netcoreapp3.1\Razor\Views\Usuario\Listagem.cshtml.g.cs
