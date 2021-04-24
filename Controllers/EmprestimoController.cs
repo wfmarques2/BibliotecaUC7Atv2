@@ -45,11 +45,11 @@ namespace Biblioteca.Controllers
 
             int quantidadePorPagina = 10;
 
-            EmprestimoService es = new EmprestimoService();
+            EmprestimoService emprest = new EmprestimoService();
 
-            ICollection<Emprestimo> emprestimos = es.Listar(p, quantidadePorPagina);
+            ICollection<Emprestimo> emprestimos = emprest.Listar(p, quantidadePorPagina);
 
-            int quantidadeRegistros = es.CountEmprestimos();
+            int quantidadeRegistros = emprest.CountEmprestimos();
 
             ViewData["Paginas"] = (int)Math.Ceiling((double)quantidadeRegistros / quantidadePorPagina);
 
@@ -81,7 +81,7 @@ namespace Biblioteca.Controllers
             {
                 ViewData["Mensagem02"] = "Nenhum registro encontrado";
             }
-            
+
             return View(emprestimos);
         }
 
