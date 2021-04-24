@@ -14422,6 +14422,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\tairi\\Desktop\\Atividade 01\\Biblioteca\\Views\\Usuario\\Listagem.cshtml",
+      "TargetPath": "Views\\Usuario\\Listagem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\tairi\\Desktop\\Atividade 01\\Biblioteca\\Views\\Emprestimo\\Edicao.cshtml",
       "TargetPath": "Views\\Emprestimo\\Edicao.cshtml",
       "FileKind": "mvc"
@@ -14472,8 +14477,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\tairi\\Desktop\\Atividade 01\\Biblioteca\\Views\\Usuario\\Cadastro.cshtml",
+      "TargetPath": "Views\\Usuario\\Cadastro.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\tairi\\Desktop\\Atividade 01\\Biblioteca\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\tairi\\Desktop\\Atividade 01\\Biblioteca\\Views\\Usuario\\Editar.cshtml",
+      "TargetPath": "Views\\Usuario\\Editar.cshtml",
       "FileKind": "mvc"
     }
   ],
