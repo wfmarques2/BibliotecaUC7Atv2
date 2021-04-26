@@ -20,8 +20,11 @@ namespace Biblioteca.Models
             using (BibliotecaContext bc = new BibliotecaContext())
             {
                 Livro livro = bc.Livros.Find(l.Id);
+
                 livro.Autor = l.Autor;
+
                 livro.Titulo = l.Titulo;
+
                 livro.Ano = l.Ano;
 
                 bc.SaveChanges();
@@ -104,7 +107,6 @@ namespace Biblioteca.Models
 
             using (BibliotecaContext bc = new BibliotecaContext())
             {
-
                 return bc.Livros.Count();
             }
         }
