@@ -12,6 +12,7 @@ namespace Biblioteca.Models
             using (BibliotecaContext bc = new BibliotecaContext())
             {
                 bc.Usuario.Add(u);
+
                 bc.SaveChanges();
             }
         }
@@ -27,6 +28,7 @@ namespace Biblioteca.Models
             using (BibliotecaContext bc = new BibliotecaContext())
             {
                 IQueryable<Usuario> query = bc.Usuario;
+
                 return query.OrderBy(u => u.Id).ToList();
             }
         }
@@ -36,6 +38,7 @@ namespace Biblioteca.Models
             using (BibliotecaContext bc = new BibliotecaContext())
             {
                 bc.Usuario.Remove(u);
+
                 bc.SaveChanges();
             }
         }
@@ -48,7 +51,9 @@ namespace Biblioteca.Models
                 if (usuario.Login == user.Login && usuario.Senha == user.Senha)
                 {
                     user.Login = usuario.Login;
+
                     user.Senha = usuario.Senha;
+                    
                     user.Id = usuario.Id;
                 }
                 else
