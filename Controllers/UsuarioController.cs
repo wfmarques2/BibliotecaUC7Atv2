@@ -26,9 +26,9 @@ namespace Biblioteca.Controllers
         public IActionResult Cadastro(Usuario u)
         {  
 
-            UsuarioService us = new UsuarioService();
+            UsuarioService usuario = new UsuarioService();
 
-            us.Cadastrar(u);
+            usuario.Cadastrar(u);
 
             return RedirectToAction("Listagem");
 
@@ -39,9 +39,9 @@ namespace Biblioteca.Controllers
 
             ICollection<Usuario> usuarios;
 
-            UsuarioService us = new UsuarioService();
+            UsuarioService usuario = new UsuarioService();
 
-            usuarios = us.Listar();
+            usuarios = usuario.Listar();
 
             if(HttpContext.Session.GetString("login") != "admin"){
                 return RedirectToAction("Index", "Home");
@@ -56,11 +56,11 @@ namespace Biblioteca.Controllers
         public IActionResult Editar(int id)
         {
 
-            UsuarioService us = new UsuarioService();
+            UsuarioService user = new UsuarioService();
 
             Usuario usuario = new Usuario();
 
-            usuario = us.ObterPorId(id);
+            usuario = user.ObterPorId(id);
 
             return View(usuario);
 
@@ -73,7 +73,9 @@ namespace Biblioteca.Controllers
             using(BibliotecaContext bc = new BibliotecaContext())
             {
                 Usuario usuario = bc.Usuario.Find(u.Id);
+
                 usuario.Login = u.Login;
+                
                 usuario.Senha = u.Senha;
 
                 bc.SaveChanges();
@@ -85,9 +87,12 @@ namespace Biblioteca.Controllers
         public IActionResult Remover(int id)
         {
             Usuario usuario = new Usuario();
-            UsuarioService us = new UsuarioService();
-            usuario = us.ObterPorId(id);
-            us.Remover(usuario);
+
+            UsuarioService user = new UsuarioService();
+
+            usuario = user.ObterPorId(id);
+
+            user.Remover(usuario);
 
             return RedirectToAction("Listagem");
         }
