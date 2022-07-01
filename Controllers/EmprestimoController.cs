@@ -21,10 +21,8 @@ namespace Biblioteca.Controllers
             CadEmprestimoViewModel cadModel = new CadEmprestimoViewModel();
             cadModel.Livros = livroService.ListarDisponiveis();
 
-            if (HttpContext.Session.GetString("login") == null)
-                return RedirectToAction("Index", "Home");
 
-            return View(cadModel);
+              return View(cadModel);
         }
 
         [HttpPost]
@@ -57,9 +55,7 @@ namespace Biblioteca.Controllers
 
             ViewData["Paginas"] = (int)Math.Ceiling((double)quantidadeRegistros / quantidadePorPagina);
 
-            if (HttpContext.Session.GetString("login") == null){
-                return RedirectToAction("Index", "Home");
-            }
+            
 
             return View(emprestimos);
         }

@@ -14,10 +14,7 @@ namespace Biblioteca.Controllers
     {
         public IActionResult Cadastro()
         {
-            if (HttpContext.Session.GetString("login") == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            
 
             return View();
         }

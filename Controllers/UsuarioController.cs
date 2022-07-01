@@ -14,11 +14,7 @@ namespace Biblioteca.Controllers
     {
         public IActionResult Cadastro()
         { 
-
-            if(HttpContext.Session.GetString("login") != "admin"){
-                return RedirectToAction("Index", "Home");
-            }
-            
+             
             return View();
         } 
 
@@ -43,9 +39,7 @@ namespace Biblioteca.Controllers
 
             usuarios = usuario.Listar();
 
-            if(HttpContext.Session.GetString("login") != "admin"){
-                return RedirectToAction("Index", "Home");
-            }
+           
 
             return View(usuarios);
             

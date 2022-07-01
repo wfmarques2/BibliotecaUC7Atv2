@@ -21,11 +21,7 @@ namespace Biblioteca.Controllers
 
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetInt32("id_usuarios") == null)
-            {
-                return RedirectToAction("Login");
-            }
-
+            Autenticacao.CheckLogin(this);
             return View();
         }
 
@@ -35,29 +31,18 @@ namespace Biblioteca.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(Usuario u)
+        public IActionResult Login(string login, string senha)
         {
-
-            UsuarioService user = new UsuarioService();
-
-            Usuario usuario = user.Login(u);
-
-            if (usuario != null)
+            if(login != "admin" || senha != "123")
             {
-
-                HttpContext.Session.SetInt32("id_usuarios", usuario.Id);
-                HttpContext.Session.SetString("login", usuario.Login);
-                HttpContext.Session.SetString("senha", usuario.Senha);
-
-                ViewData["Login"] = "Login realizado com sucesso!";
-
+                ViewData["Erro"] = "Senha inválida";
+                return View();
             }
             else
             {
-                ViewData["Login"] = "Erro ao realizar o login!";
+                HttpContext.Session.SetString("user", "admin");
+                return RedirectToAction("Index");
             }
-
-            return View();
         }
 
         public IActionResult Privacy()
